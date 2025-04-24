@@ -7,78 +7,100 @@
         font-weight: 500;
         font-style: normal;
     }
-    .content{
+    .navbar {
+        background-color: #000000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .navbar-container {
+        max-width: 100%;
+        margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        flex-wrap: wrap;
     }
 
-    .navbar{
+    .logo img {
+        height: 50px;
+    }
+
+    .nav-links {
         display: flex;
-        align-content: center;
-        justify-content: center;
-        background-color: black;
-        width: 100%;
-        height: 78px;
-
-        & .onglets{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            gap: 20px;
-            & a{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-decoration: none;
-                color: #ffffff;
-                width: 150px;
-                height: 70%;
-                padding: 20px;
-
-                border-radius: 10px;
-            }
-        }
-        & .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50%;
-
-            & img{
-                width: 30%;
-            }
-        }
+        gap: 40px;
+        flex-wrap: wrap;
     }
 
+    .nav-links a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: var(--color-btn-red);
+    }
+
+    .auth-links, .account {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .auth-links a {
+        text-decoration: none;
+        padding: 8px 12px;
+        border: 1px solid var(--color-btn-red);
+        color: white;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .auth-links a:hover {
+        background-color: var(--color-btn-red);
+        color: white;
+    }
+
+    .account img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--color-btn-red);
+    }
 </style>
-<div class="content">
-    <div class="navbar">
+<div class="navbar">
+    <div class="navbar-container">
+        <!-- Logo -->
         <div class="logo">
-            <img src="{{ asset('logo.png') }}" alt="">
+            <img src="{{ asset('logo.png') }}" alt="Logo">
         </div>
-        <div class="onglets">
+
+        <!-- Onglets de navigation -->
+        <div class="nav-links">
             <a href="{{ route('home') }}">Accueil</a>
             <a href="#">Destockage</a>
             <a href="#">Contact</a>
-            <a href="#">Nouvauté</a>
-
-
-            @if(\Illuminate\Support\Facades\Auth::user())
-                <div class="account">
-                    <div class="round">
-                        <img src="{{ asset('K') }}" alt="">
-                    </div>
-                </div>
-            @else
-                <div class="registration">
-                    <a href="#"> Se Connecter</a>
-                    <a href="#"> S'inscrire</a>
-                </div>
-            @endif
-            <!-- Si il est connecter afficher mon compte sinon se connecter login-->
+            <a href="#">Nouveauté</a>
         </div>
+
+        <!-- Compte ou Connexion -->
+        @if(Auth::check())
+            <div class="account">
+                <a href="">
+                    <img src="{{ asset('K') }}" alt="Avatar">
+                </a>
+            </div>
+        @else
+            <div class="auth-links">
+                <a href="">Se connecter</a>
+                <a href="">S'inscrire</a>
+            </div>
+        @endif
     </div>
 </div>
 
