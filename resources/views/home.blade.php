@@ -21,7 +21,7 @@
                 <a href=""><img src="{{ asset('suzuki.svg') }}" alt=""></a>
                 <a href="" style="background-color: black"><img src="{{ asset('kawazaki.webp') }}" alt=""></a>
                 <a href="" style="background-color: #FE6702"><img src="{{ asset('KTM-Logo.png') }}" alt=""></a>
-                <a href="" style="background-color: #FE6702"><img src="{{ asset('KTM-Logo.png') }}" alt=""></a>
+                <a href="" style="background-color: black"><img src="{{ asset('Motoplex.png') }}" alt=""></a>
             </div>
         </header>
     </div>
